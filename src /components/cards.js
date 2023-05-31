@@ -12,6 +12,7 @@ const Card = (props) => {
                 <View >
                     <Text>{'name:'  + props.name}</Text>
                     <Text>{'bd: ' + props.bd}</Text>
+                   
                     
                     
                 </View>

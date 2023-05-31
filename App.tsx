@@ -33,7 +33,7 @@ const App = () => {
       {
         name:'rabea' , 
         bd:'6.7',
-        uiText:'my first id '
+        
       
       }
 
