@@ -1,9 +1,47 @@
-import react, { cloneElement } from "react";
-import { Image, ImageBackground,ScrollView,StyleSheet,Text,View } from "react-native";
+import react, { cloneElement, useEffect, useState } from "react";
+import { Button, Image, ImageBackground,ScrollView,StyleSheet,Text,TextInput,View } from "react-native";
 import { Colors } from "react-native/Libraries/NewAppScreen";
 import Card from "./src /components/cards";
 import { get } from "react-native/Libraries/TurboModule/TurboModuleRegistry";
 const App = () => {
+
+  const [x, setX] = useState(0)
+  const [txt, setTxt] = useState("")
+
+  useEffect(()=>{
+    console.log("did load");
+    
+
+    return ()=> {
+      console.log("component will unmount"); 
+    }
+  } , [])
+
+  useEffect(() => {
+      console.log("text changed, the new text is: " , txt);
+  } , [txt])
+
+  return (
+    <View>
+      <Text style={style.text}>{txt}</Text>
+      <TextInput 
+      style={style.text}
+      value={txt} 
+      onChangeText={(val)=> setTxt(val)}
+      placeholder='text'
+       />
+
+      <Button title="press" onPress={()=> setTxt("")}/>
+
+    </View>
+  )
+}
+
+const style = StyleSheet.create({
+  text: {
+    fontSize: 50
+  }
+})
 
     const data = [
       {
@@ -46,7 +84,7 @@ const App = () => {
       return data.map(cardData => {
         return <Card name={cardData.name} bd={cardData.bd} bgc={cardData.bgc}   />
       })
-    }
+    
   
     return (
       <View style={styles.container} >
